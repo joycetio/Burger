@@ -11,7 +11,7 @@ var routes = require('./controllers/burgers_controller.js');
 
 //express setup 
 var app = express();
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3306;
 
 //sets up the Express app to handle data parsing
 app.use(express.static(process.cwd() + '/public'));
