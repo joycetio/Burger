@@ -5,9 +5,9 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 
 //import routes and give the server access to them.
-var routes = require('.controllers/burgers_controller.js');
+var routes = require('./controllers/burgers_controller.js');
 
-app.use('/', routes);
+// app.use('/', routes);
 
 //express setup 
 var app = express();
@@ -30,4 +30,4 @@ app.set("view engine", "handlebars");
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
 });
-};
+
