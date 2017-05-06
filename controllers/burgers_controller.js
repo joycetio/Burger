@@ -19,8 +19,8 @@ router.post("/", function(req, res) {
 	});
 });
 
-router.put("/:id", function(req, res) {
-	var condition = "id = " + req.params.id; 
+router.put("/:ID", function(req, res) {
+	var condition = "ID = " + req.params.ID; 
 
 	console.log("condition: ", condition); 
 

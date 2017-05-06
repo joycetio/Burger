@@ -11,12 +11,12 @@ function objToSql(ob) {
   }
 
   return arr.toString();
-}
+};
 
 
 var orm = {
 	selectAll: function(tableInput, callBack) {
-		var queryString = "SELECT * FROM" + tableInput + ";"; 
+		var queryString = "SELECT * FROM " + tableInput + ";"; 
 
 		connection.query(queryString, function(err, result) {
 			if (err) { throw err; }
@@ -25,8 +25,8 @@ var orm = {
 		});
 	}, 
 
-	insertOne: function(table, value, callBack) {
-		var queryString = 'INSERT INTO' + table; 
+	insertOne: function(tableInput, value, callBack) {
+		var queryString = 'INSERT INTO ' + tableInput; 
 
 		queryString += '(BURGER_NAME, DEVOURED) VALUES ("'; 
 		queryString += value; 
@@ -39,10 +39,10 @@ var orm = {
 		});
 	}, 
 
-	updateOne: function(table, column, condition, callBack) {
-		var queryString = 'UPDATE ' + table; 
+	updateOne: function(tableInput, column, condition, callBack) {
+		var queryString = 'UPDATE ' + tableInput; 
 
-		queryString += "SET "; 
+		queryString += " SET "; 
 		queryString += objToSql(column); 
 		queryString += " WHERE ";
 		queryString += condition; 

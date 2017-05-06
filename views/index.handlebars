@@ -1,0 +1,86 @@
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-lg-4 col-lg-offset-4">
+			<img class="img-responsive" src="assets/img/burger.png">
+		</div>
+		<div class="col-lg-6 col-lg-offset-3">
+			<br>
+			<br>
+			<form method="POST" action="/">
+				<div class="form-group">
+					<div class="input-group col-lg-12 col-xs-offset-0">
+						<input class="form-control" type="text" placeholder="What kind of burger would you like?" name="burgerUserInput">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="submit">Submit</button>
+						</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+        <div class="col-lg-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title">Served Orders</h1>
+                </div>
+                <div class="panel-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Order</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {{#each burgers}}
+                        {{#unless this.DEVOURED}}
+                        <tr>
+                        	<td>{{this.ID}}</td>
+                        	<td>{{this.BURGER_NAME}}</td>
+                        	<td class="text-right">
+                        		<form action="/{{this.ID}}?_method=PUT" method="POST">
+                        			<input type="hidden" name="DEVOURED" value="true">
+                        			<button class="btn btn-primary btn-sm" type="submit">Devour Burger</button>
+                        		</form>
+                        	</td>
+                        </tr>
+                        {{/unless}}
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+        	<div class="panel panel-default">
+        		<div class="panel-heading">
+        			<h1 class="panel-title">Orders Devoured</h1>
+        		</div>
+        		<div class="panel-body">
+        			<div class="table-responsive">
+        				<table class="table table-striped">
+        					<thead>
+        						<tr>
+        							<th>#</th>
+        							<th>Order</th>
+        						</tr>
+        					</thead>
+        					<tbody>
+        						{{#each burgers}}
+        							{{#if this.DEVOURED}}
+        							<tr>
+        								<td>{{this.ID}}</td>
+        								<td>{{this.BURGER_NAME}}</td>
+        							</tr>
+        							{{/if}}
+        						{{/each}}
+        					</tbody>
+        				</table>
+        			</div>
+        		</div>
+        	</div> 
+        </div>
+    </div>
+</div>

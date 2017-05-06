@@ -7,17 +7,13 @@ var exphbs = require('express-handlebars');
 //import routes and give the server access to them.
 var routes = require('./controllers/burgers_controller.js');
 
-// app.use('/', routes);
-
 //express setup 
 var app = express();
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 3000;
 
 //sets up the Express app to handle data parsing
 app.use(express.static(process.cwd() + '/public'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.text());
 
 //override w POST having ?_method=DELETE
 app.use(methodOverride('_method'));
@@ -25,6 +21,8 @@ app.use(methodOverride('_method'));
 //set handlebars 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.use("/", routes);
 
 //starts the server to begin listening
 app.listen(PORT, function() {
